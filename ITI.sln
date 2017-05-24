@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITI.Data", "ITI.Date\ITI.Data.csproj", "{970B043B-773F-4B4F-8B0C-B721DB1106C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITI.Business", "ITI.Business\ITI.Business.csproj", "{39A45435-45C0-4921-82E3-A97C3EEF0361}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{739F60B7-DE90-4673-9ECC-BEBF43F0AA20}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITI.API", "ITI.API\ITI.API.csproj", "{92D93332-B275-4057-8227-C9DDF3CA9066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIAuthorizationServer", "ITIAuthorizationServer\ITIAuthorizationServer.csproj", "{24872D28-E5D4-4886-A9FA-BD9D03DA1ECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clint1", "clint1\clint1.csproj", "{58DC3501-1AD1-4D44-9157-ED1E5AD37516}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{970B043B-773F-4B4F-8B0C-B721DB1106C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970B043B-773F-4B4F-8B0C-B721DB1106C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970B043B-773F-4B4F-8B0C-B721DB1106C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970B043B-773F-4B4F-8B0C-B721DB1106C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A45435-45C0-4921-82E3-A97C3EEF0361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A45435-45C0-4921-82E3-A97C3EEF0361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A45435-45C0-4921-82E3-A97C3EEF0361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A45435-45C0-4921-82E3-A97C3EEF0361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92D93332-B275-4057-8227-C9DDF3CA9066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92D93332-B275-4057-8227-C9DDF3CA9066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92D93332-B275-4057-8227-C9DDF3CA9066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92D93332-B275-4057-8227-C9DDF3CA9066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24872D28-E5D4-4886-A9FA-BD9D03DA1ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24872D28-E5D4-4886-A9FA-BD9D03DA1ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24872D28-E5D4-4886-A9FA-BD9D03DA1ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24872D28-E5D4-4886-A9FA-BD9D03DA1ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58DC3501-1AD1-4D44-9157-ED1E5AD37516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58DC3501-1AD1-4D44-9157-ED1E5AD37516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58DC3501-1AD1-4D44-9157-ED1E5AD37516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58DC3501-1AD1-4D44-9157-ED1E5AD37516}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

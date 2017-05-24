@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ITIAuthorizationServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="200" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ClientUri" Type="nvarchar(max)" />
+          <Property Name="LogoUri" Type="nvarchar(max)" />
+          <Property Name="FlowID" Type="int" />
+          <Property Name="ClientSecrets" Type="nvarchar" MaxLength="550" />
+        </EntityType>
+        <EntityType Name="Flow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Flow" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_Client_Flow">
+          <End Role="Flow" Type="Self.Flow" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="FlowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITIAuthorizationServerModelStoreContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flow" EntityType="Self.Flow" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_Flow" Association="Self.FK_Client_Flow">
+            <End Role="Flow" EntitySet="Flow" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ITIAuthorizationServerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="ClientId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ClientName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ClientUri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogoUri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FlowID" Type="Int32" />
+          <Property Name="ClientSecrets" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Flow" Relationship="Self.FK_Client_Flow" FromRole="Client" ToRole="Flow" />
+        </EntityType>
+        <EntityType Name="Flow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Flow1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Client_Flow" FromRole="Flow" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_Client_Flow">
+          <End Role="Flow" Type="Self.Flow" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="FlowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITIAuthorizationServerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Flows" EntityType="Self.Flow" />
+          <AssociationSet Name="FK_Client_Flow" Association="Self.FK_Client_Flow">
+            <End Role="Flow" EntitySet="Flows" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ITIAuthorizationServerModelStoreContainer" CdmEntityContainer="ITIAuthorizationServerEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="ITIAuthorizationServerModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientUri" ColumnName="ClientUri" />
+                <ScalarProperty Name="LogoUri" ColumnName="LogoUri" />
+                <ScalarProperty Name="FlowID" ColumnName="FlowID" />
+                <ScalarProperty Name="ClientSecrets" ColumnName="ClientSecrets" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flows">
+            <EntityTypeMapping TypeName="ITIAuthorizationServerModel.Flow">
+              <MappingFragment StoreEntitySet="Flow">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Flow1" ColumnName="Flow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
