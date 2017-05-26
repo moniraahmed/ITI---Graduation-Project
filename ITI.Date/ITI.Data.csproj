@@ -85,10 +85,19 @@
     <Compile Include="DBmodel\Branch.cs">
       <DependentUpon>ITIModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBmodel\Complaint_Stage.cs">
+      <DependentUpon>ITIModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBmodel\Complain_Category.cs">
+      <DependentUpon>ITIModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBmodel\Course.cs">
       <DependentUpon>ITIModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBmodel\CourseManual.cs">
+      <DependentUpon>ITIModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBmodel\Department.cs">
       <DependentUpon>ITIModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBmodel\Employee.cs">
@@ -122,10 +131,13 @@
     <Compile Include="DBmodel\ProgramIntake.cs">
       <DependentUpon>ITIModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBmodel\Stage.cs">
+      <DependentUpon>ITIModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBmodel\StudentBasicData.cs">
       <DependentUpon>ITIModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBmodel\StudentsProfessional.cs">
+    <Compile Include="DBmodel\Student_Complaints.cs">
       <DependentUpon>ITIModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBmodel\subTrack.cs">

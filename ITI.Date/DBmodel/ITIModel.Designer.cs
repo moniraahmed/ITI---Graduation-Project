@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\app\ITI\ITI.Date\DBmodel\ITIModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\mohamed\Desktop\ITI-24-5\ITI.Date\DBmodel\ITIModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

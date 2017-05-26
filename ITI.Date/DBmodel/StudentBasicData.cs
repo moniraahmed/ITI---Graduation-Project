@@ -18,7 +18,8 @@ namespace ITI.Data.DBmodel
         public StudentBasicData()
         {
             this.UserDevices = new HashSet<UserDevice>();
-            this.StudentsProfessionals = new HashSet<StudentsProfessional>();
+            this.Student_Complaints = new HashSet<Student_Complaints>();
+            this.Student_Complaints1 = new HashSet<Student_Complaints>();
         }
     
         public int StudentID { get; set; }
@@ -62,8 +63,10 @@ namespace ITI.Data.DBmodel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserDevice> UserDevices { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentsProfessional> StudentsProfessionals { get; set; }
         public virtual PlatfromIntake PlatfromIntake { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student_Complaints> Student_Complaints { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student_Complaints> Student_Complaints1 { get; set; }
     }
 }

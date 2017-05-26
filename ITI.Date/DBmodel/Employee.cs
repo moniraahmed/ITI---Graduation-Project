@@ -20,6 +20,7 @@ namespace ITI.Data.DBmodel
             this.UserDevices = new HashSet<UserDevice>();
             this.TrackManagers = new HashSet<TrackManager>();
             this.TrackSupervisors = new HashSet<TrackSupervisor>();
+            this.Complaint_Stage = new HashSet<Complaint_Stage>();
         }
     
         public int EmployeeID { get; set; }
@@ -84,5 +85,7 @@ namespace ITI.Data.DBmodel
         public virtual ICollection<TrackManager> TrackManagers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TrackSupervisor> TrackSupervisors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Complaint_Stage> Complaint_Stage { get; set; }
     }
 }

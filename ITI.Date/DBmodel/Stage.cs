@@ -12,13 +12,18 @@ namespace ITI.Data.DBmodel
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentsProfessional
+    public partial class Stage
     {
-        public int ID { get; set; }
-        public int StudentID { get; set; }
-        public string ProfessionalNetworkName { get; set; }
-        public string ProfessionalNetworkURL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Stage()
+        {
+            this.Complaint_Stage = new HashSet<Complaint_Stage>();
+        }
     
-        public virtual StudentBasicData StudentBasicData { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Complaint_Stage> Complaint_Stage { get; set; }
     }
 }

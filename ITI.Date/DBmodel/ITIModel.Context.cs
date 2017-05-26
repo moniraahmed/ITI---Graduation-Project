@@ -28,7 +28,6 @@ namespace ITI.Data.DBmodel
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<StudentBasicData> StudentBasicDatas { get; set; }
         public virtual DbSet<UserDevice> UserDevices { get; set; }
-        public virtual DbSet<StudentsProfessional> StudentsProfessionals { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<CourseManual> CourseManuals { get; set; }
         public virtual DbSet<PlatfromIntake> PlatfromIntakes { get; set; }
@@ -41,5 +40,10 @@ namespace ITI.Data.DBmodel
         public virtual DbSet<TrackManager> TrackManagers { get; set; }
         public virtual DbSet<TrackSupervisor> TrackSupervisors { get; set; }
         public virtual DbSet<TrainBranch> TrainBranches { get; set; }
+        public virtual DbSet<Complain_Category> Complain_Category { get; set; }
+        public virtual DbSet<Complaint_Stage> Complaint_Stage { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Stage> Stages { get; set; }
+        public virtual DbSet<Student_Complaints> Student_Complaints { get; set; }
     }
 }
