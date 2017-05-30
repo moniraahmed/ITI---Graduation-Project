@@ -34,6 +34,8 @@ namespace ITI.Business.Map
                 cfg.CreateMap<TrackManualMap, TrackManual>();
                 cfg.CreateMap<CourseManual, CourseManualMap>();
                 cfg.CreateMap<CourseManualMap, CourseManual>();
+                cfg.CreateMap<Employee, EmployeeMap>();
+                cfg.CreateMap<EmployeeMap, Employee>();
             });
 
         }

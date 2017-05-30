@@ -11,9 +11,6 @@ namespace ITI.Business.Map
     public partial class programMap
     {
        
-           
-          
-
             public int programId { get; set; }
             public string programName { get; set; }
             public string programnotes { get; set; }

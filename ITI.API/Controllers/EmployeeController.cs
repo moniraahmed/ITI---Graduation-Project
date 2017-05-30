@@ -10,19 +10,19 @@ using ITI.Data;
 using ITI.Data.DBmodel;
 using System.Web.Http.OData.Query;
 using System.Web.Http.OData;
-
+using ITI.Business.Map;
 
 namespace ITI.API.Controllers
 {
-    [RoutePrefix("api/Employee")]
+    [RoutePrefix("api/Employees")]
     public class EmployeeController : ApiController
     {
-        [Route("GetEmployee")]
+        [Route("GetEmployee1")]
         [HttpGet]
-        public IEnumerable<Employee> Get()
+        public IEnumerable<EmployeeMap> Get()
         {
             
-            return new EmployeeManager().getemp().ToList();
+            return new EmployeeManager().Getemp().ToList();
 
         }
         //[Route("gettoken")]
@@ -34,13 +34,12 @@ namespace ITI.API.Controllers
         //    return acctoken;
 
         //}
-        [Route("GetEmployee2")]
+        [Route("GetEmployee")]
         [HttpGet]
       //  [InlineCountQueryable]
-        public  IEnumerable<Employee> Get2(ODataQueryOptions<Employee> options)
+        public  IEnumerable<EmployeeMap> Get(ODataQueryOptions<EmployeeMap> options)
         {
-            IEnumerable<Employee> employees = new EmployeeManager().getemp().TOOData(options,this);
-            return employees ;
+            return new EmployeeManager().Getemp().TOOData(options,this);
             //ODataQuerySettings settingsodata = new ODataQuerySettings()
             //{
             //    PageSize = 10
@@ -55,6 +54,12 @@ namespace ITI.API.Controllers
             //   this.Request.GetInlineCount());
             ////return new EmployeeManager().getemp(options,this).ToList();
 
+        }
+        [Route("GetEmployee/{id}")]
+        [HttpGet]
+        public EmployeeMap Get(int id)
+        {
+            return new EmployeeManager().Getemp(id);
         }
         //static void CallApi(TokenResponse response)
         //{
@@ -74,4 +79,5 @@ namespace ITI.API.Controllers
         //    return client.RequestResourceOwnerPasswordAsync("test", "123456", "test").Result;
         //}
     }
+   
 }

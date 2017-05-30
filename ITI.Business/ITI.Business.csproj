@@ -57,6 +57,7 @@
     <Compile Include="Map\BranchMap.cs" />
     <Compile Include="Map\CourseManualMap.cs" />
     <Compile Include="Map\CourseMap.cs" />
+    <Compile Include="Map\EmployeeMap.cs" />
     <Compile Include="Map\IntakMap.cs" />
     <Compile Include="Map\MapConfig.cs" />
     <Compile Include="Map\PlatfromIntakeMap.cs" />
