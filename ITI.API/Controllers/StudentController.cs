@@ -14,7 +14,9 @@ namespace ITI.API.Controllers
     public class StudentController : ApiController
     {
         [Route("Getstudent")]
-        [HttpGet]
+        [System.Web.Http.AcceptVerbs("GET", "POST")]
+        [System.Web.Http.HttpGet]
+        
         // GET: Student
         public IEnumerable<StudentBasicDataMap> Get(ODataQueryOptions<StudentBasicDataMap> options)
         {
