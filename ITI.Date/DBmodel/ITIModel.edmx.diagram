@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a3946145e8ee4367a5cb99b31f052704" Name="Diagram1" ZoomLevel="100">
+      <Diagram DiagramId="a3946145e8ee4367a5cb99b31f052704" Name="Diagram1" ZoomLevel="109">
         <EntityTypeShape EntityType="Model.Employee" Width="1.5" PointX="0.5" PointY="3.5" IsExpanded="false" />
         <EntityTypeShape EntityType="Model.StudentBasicData" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.UserDevice" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="false" />
@@ -40,23 +40,22 @@
         <EntityTypeShape EntityType="Model.Complain_Category" Width="1.5" PointX="3.75" PointY="9.125" />
         <EntityTypeShape EntityType="Model.Complaint_Stage" Width="1.5" PointX="8.25" PointY="8.5" />
         <EntityTypeShape EntityType="Model.Stage" Width="1.5" PointX="6" PointY="13.375" />
-        <EntityTypeShape EntityType="Model.Student_Complaints" Width="1.5" PointX="6" PointY="6.125" />
         <AssociationConnector Association="Model.FK_Stages_Complain_Category" />
-        <AssociationConnector Association="Model.FK_Student_Complaints_Complain_Category" />
         <AssociationConnector Association="Model.FK_Complaint_Stage_Employee" ManuallyRouted="true" >
-          <ConnectorPoint PointX="2" PointY="3.8932297692307696" />
+          <ConnectorPoint PointX="2" PointY="3.7405488473840394" />
           <ConnectorPoint PointX="2.3959009117090151" PointY="4.275" />
-          <ConnectorPoint PointX="4.8634447760416677" PointY="4.2749999999999995" />
-          <ConnectorPoint PointX="5.0301114427083338" PointY="4.275" />
+          <ConnectorPoint PointX="4.135416666666667" PointY="4.2749999999999995" />
+          <ConnectorPoint PointX="4.302083333333333" PointY="4.275" />
           <ConnectorPoint PointX="8.6458333333333339" PointY="4.275" />
           <ConnectorPoint PointX="8.6458333333333339" PointY="8.125" />
           <ConnectorPoint PointX="7.875" PointY="8.125" />
           <ConnectorPoint PointX="8.25" PointY="8.5" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_Complaint_Stage_Stages" />
+        <EntityTypeShape EntityType="Model.Student_Complaints" Width="1.5" PointX="6" PointY="5" />
+        <AssociationConnector Association="Model.FK_Student_Complaints_Complain_Category" />
         <AssociationConnector Association="Model.FK_Complaint_Stage_Student_Complaints" />
-        <AssociationConnector Association="Model.FK_Student_Complaints_StudentBasicData" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_StudentComplaint" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

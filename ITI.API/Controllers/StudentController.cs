@@ -6,7 +6,8 @@ using System.Web;
 using ITI.Business.Manager;
 using System.Web.Http.OData.Query;
 using System.Web.Http;
-
+using ITI.Business;
+using ITI.Data.DBmodel;
 
 namespace ITI.API.Controllers
 {
@@ -40,8 +41,13 @@ namespace ITI.API.Controllers
             return new StudentManager().GetStudent(username,pass);
 
         }
-
-
+        [Route("AddComplaint/{id}")]
+        [HttpPost]
+        public bool AddNewComplaint(int id,[FromBody]Student_Complaints newcomplaint)
+        {
+            new ComplaintManager().AddComplaint(newcomplaint);
+              return true;
+        }
 
     }
 }

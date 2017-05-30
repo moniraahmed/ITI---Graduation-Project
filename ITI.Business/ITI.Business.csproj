@@ -52,9 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComplaintManager.cs" />
     <Compile Include="IntakManager.cs" />
     <Compile Include="EmployeeManager.cs" />
     <Compile Include="Map\BranchMap.cs" />
+    <Compile Include="Map\ComplaintMap.cs" />
     <Compile Include="Map\CourseManualMap.cs" />
     <Compile Include="Map\CourseMap.cs" />
     <Compile Include="Map\EmployeeMap.cs" />
