@@ -34,9 +34,7 @@ namespace ITI.Business.Manager
             var re =  Mapper.Map<StudentBasicDataMap>(x);
             if (re.userpwd == pass)
             {
-                var st_id = re.StudentID;
                 return re;
-                
             }
             else
             {

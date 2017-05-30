@@ -25,33 +25,48 @@ namespace ITI.Business.Manager
             return e;
 
         }
+        public EmployeeMap Getemp(string username,string pwd)
+        {
+            var x = FindobjBy(a => a.UserName2 == username);
+            var re = Mapper.Map<EmployeeMap>(x);
+            if (re.IPassword == pwd)
+            {
+                return re;
+            }
+            else
+            {
+                return null;
+            }
 
-            //    public Group AddGroup(Group group)
-            //    {
-            //        GroupManager groupmanager = new GroupManager();
-            //        return groupmanager.Add(group);
-            //        // groupmanager.Save();
-            //       // return group.GroupID.ToString();
-            //    }
-            //    public bool EditGroup(Group group)
-            //    {
-            //        return new GroupManager().Edit(group);
-            //    }
-            //    public bool DeleteGroup(int groupid)
-            //    {
-            //        GroupManager groupManager = new GroupManager();
-            //        Group groups = groupManager.FindBy(x => x.GroupID == groupid).FirstOrDefault();
-            //        return groupManager.Delete(groups);
-            //    }
-            //    public IEnumerable<Group> GetSystemGroup()
-            //    {
-            //       // return FindBy(x => x.GroupSystem == false && x.GroupCreatorID == groupCreatorId);
-            //        return new GroupManager().FindBy(x => x.GroupSystem == true);
-            //    }
-            //    public IEnumerable<Group> GetUserGroup(int groupCreatorId, ODataQueryOptions<Group> options, ApiController controller)
-            //    {
-            //       //string xx= FindBy(x => x.GroupSystem == false && x.GroupCreatorID == groupCreatorId).ToString();
-            //        return FindBy(x => x.GroupSystem == false && x.GroupCreatorID == groupCreatorId,options,controller);
-            //    }
-     }
+
+        }
+
+        //    public Group AddGroup(Group group)
+        //    {
+        //        GroupManager groupmanager = new GroupManager();
+        //        return groupmanager.Add(group);
+        //        // groupmanager.Save();
+        //       // return group.GroupID.ToString();
+        //    }
+        //    public bool EditGroup(Group group)
+        //    {
+        //        return new GroupManager().Edit(group);
+        //    }
+        //    public bool DeleteGroup(int groupid)
+        //    {
+        //        GroupManager groupManager = new GroupManager();
+        //        Group groups = groupManager.FindBy(x => x.GroupID == groupid).FirstOrDefault();
+        //        return groupManager.Delete(groups);
+        //    }
+        //    public IEnumerable<Group> GetSystemGroup()
+        //    {
+        //       // return FindBy(x => x.GroupSystem == false && x.GroupCreatorID == groupCreatorId);
+        //        return new GroupManager().FindBy(x => x.GroupSystem == true);
+        //    }
+        //    public IEnumerable<Group> GetUserGroup(int groupCreatorId, ODataQueryOptions<Group> options, ApiController controller)
+        //    {
+        //       //string xx= FindBy(x => x.GroupSystem == false && x.GroupCreatorID == groupCreatorId).ToString();
+        //        return FindBy(x => x.GroupSystem == false && x.GroupCreatorID == groupCreatorId,options,controller);
+        //    }
+    }
 }

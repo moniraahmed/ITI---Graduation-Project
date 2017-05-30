@@ -4,50 +4,60 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a3946145e8ee4367a5cb99b31f052704" Name="Diagram1" ZoomLevel="53">
-        <EntityTypeShape EntityType="Model.Employee" Width="1.5" PointX="0.75" PointY="18" />
-        <EntityTypeShape EntityType="Model.StudentBasicData" Width="1.5" PointX="0.75" PointY="1.25" />
-        <EntityTypeShape EntityType="Model.UserDevice" Width="1.5" PointX="3" PointY="4.25" />
+      <Diagram DiagramId="a3946145e8ee4367a5cb99b31f052704" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="Model.Employee" Width="1.5" PointX="0.5" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.StudentBasicData" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserDevice" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="false" />
         <AssociationConnector Association="Model.FK_UserDevices_Employee" />
         <AssociationConnector Association="Model.FK_UserDevices_StudentBasicData" />
-        <EntityTypeShape EntityType="Model.Course" Width="1.5" PointX="5.375" PointY="2.5" />
-        <EntityTypeShape EntityType="Model.CourseManual" Width="1.5" PointX="7.625" PointY="1" />
-        <EntityTypeShape EntityType="Model.PlatfromIntake" Width="1.5" PointX="0.75" PointY="11.375" />
-        <EntityTypeShape EntityType="Model.subTrack" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="Model.Course" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.CourseManual" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.PlatfromIntake" Width="1.5" PointX="3.875" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.subTrack" Width="1.5" PointX="2.375" PointY="2.375" IsExpanded="false" />
         <AssociationConnector Association="Model.FK_courseManual_Course" />
         <AssociationConnector Association="Model.FK_PlatfromIntake2_subTrack" />
         <AssociationConnector Association="Model.FK_StudentBasicData2_PlatfromIntake2" />
-        <EntityTypeShape EntityType="Model.TrackManual" Width="1.5" PointX="9.875" PointY="6.375" />
+        <EntityTypeShape EntityType="Model.TrackManual" Width="1.5" PointX="7" PointY="1.75" IsExpanded="false" />
         <AssociationConnector Association="Model.FK_TrackManual_courseManual" />
         <AssociationConnector Association="Model.FK_TrackManual_PlatfromIntake1" />
-        <EntityTypeShape EntityType="Model.Branch" Width="1.5" PointX="8.25" PointY="29.25" />
-        <EntityTypeShape EntityType="Model.Intake" Width="1.5" PointX="7.625" PointY="7.25" />
-        <EntityTypeShape EntityType="Model.program" Width="1.5" PointX="5.875" PointY="10.25" />
+        <EntityTypeShape EntityType="Model.Branch" Width="1.5" PointX="11.375" PointY="3.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Intake" Width="1.5" PointX="11.25" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.program" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="false" />
         <AssociationConnector Association="Model.FK_PlatfromIntake2_Branch" />
-        <EntityTypeShape EntityType="Model.ProgramIntake" Width="1.5" PointX="8" PointY="11.125" />
+        <EntityTypeShape EntityType="Model.ProgramIntake" Width="1.5" PointX="9.375" PointY="2.25" IsExpanded="false" />
         <AssociationConnector Association="Model.FK_PlatfromIntake2_ProgramIntake" />
         <AssociationConnector Association="Model.FK_ProgramIntake_programs" />
         <AssociationConnector Association="Model.FK_ProgramIntake_Intake" />
-        <EntityTypeShape EntityType="Model.TrackManager" Width="1.5" PointX="3.375" PointY="19.75" />
-        <EntityTypeShape EntityType="Model.TrackSupervisor" Width="1.5" PointX="3.375" PointY="16.75" />
-        <EntityTypeShape EntityType="Model.TrainBranch" Width="1.5" PointX="3.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.TrackManager" Width="1.5" PointX="2.875" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.TrackSupervisor" Width="1.5" PointX="2.5" PointY="3.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.TrainBranch" Width="1.5" PointX="5.625" PointY="3" IsExpanded="false" />
         <AssociationConnector Association="Model.FK_TrackManager_Employee" />
         <AssociationConnector Association="Model.FK_TrackSupervisor_Employee" />
         <AssociationConnector Association="Model.FK_TrackManager_PlatfromIntake" />
         <AssociationConnector Association="Model.FK_TrackSupervisor_PlatfromIntake" />
         <AssociationConnector Association="Model.FK_Branch_TrainBranch" />
-        <EntityTypeShape EntityType="Model.Complain_Category" Width="1.5" PointX="1.625" PointY="32.125" />
-        <EntityTypeShape EntityType="Model.Complaint_Stage" Width="1.5" PointX="7.125" PointY="18" />
-        <EntityTypeShape EntityType="Model.Department" Width="1.5" PointX="11.25" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.Stage" Width="1.5" PointX="4.875" PointY="22.5" />
-        <EntityTypeShape EntityType="Model.Student_Complaints" Width="1.5" PointX="3.875" PointY="10.25" />
+        <EntityTypeShape EntityType="Model.Department" Width="1.5" PointX="9.375" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="Model.Complain_Category" Width="1.5" PointX="3.75" PointY="9.125" />
+        <EntityTypeShape EntityType="Model.Complaint_Stage" Width="1.5" PointX="8.25" PointY="8.5" />
+        <EntityTypeShape EntityType="Model.Stage" Width="1.5" PointX="6" PointY="13.375" />
+        <EntityTypeShape EntityType="Model.Student_Complaints" Width="1.5" PointX="6" PointY="6.125" />
+        <AssociationConnector Association="Model.FK_Stages_Complain_Category" />
         <AssociationConnector Association="Model.FK_Student_Complaints_Complain_Category" />
-        <AssociationConnector Association="Model.FK_Complaint_Stage_Employee" />
+        <AssociationConnector Association="Model.FK_Complaint_Stage_Employee" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2" PointY="3.8932297692307696" />
+          <ConnectorPoint PointX="2.3959009117090151" PointY="4.275" />
+          <ConnectorPoint PointX="4.8634447760416677" PointY="4.2749999999999995" />
+          <ConnectorPoint PointX="5.0301114427083338" PointY="4.275" />
+          <ConnectorPoint PointX="8.6458333333333339" PointY="4.275" />
+          <ConnectorPoint PointX="8.6458333333333339" PointY="8.125" />
+          <ConnectorPoint PointX="7.875" PointY="8.125" />
+          <ConnectorPoint PointX="8.25" PointY="8.5" />
+        </AssociationConnector>
         <AssociationConnector Association="Model.FK_Complaint_Stage_Stages" />
         <AssociationConnector Association="Model.FK_Complaint_Stage_Student_Complaints" />
-        <AssociationConnector Association="Model.FK_Student_Complaints_StudentBasicData" />
-        <AssociationConnector Association="Model.FK_StudentComplaint" />
-      </Diagram>
+        <AssociationConnector Association="Model.FK_Student_Complaints_StudentBasicData" ManuallyRouted="false" >
+        </AssociationConnector>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

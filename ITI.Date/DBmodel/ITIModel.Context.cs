@@ -40,9 +40,9 @@ namespace ITI.Data.DBmodel
         public virtual DbSet<TrackManager> TrackManagers { get; set; }
         public virtual DbSet<TrackSupervisor> TrackSupervisors { get; set; }
         public virtual DbSet<TrainBranch> TrainBranches { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Complain_Category> Complain_Category { get; set; }
         public virtual DbSet<Complaint_Stage> Complaint_Stage { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Stage> Stages { get; set; }
         public virtual DbSet<Student_Complaints> Student_Complaints { get; set; }
     }

@@ -22,7 +22,10 @@ namespace ITI.Data.DBmodel
     
         public int ID { get; set; }
         public string Name { get; set; }
+        public int Duration { get; set; }
+        public int FK_CategoryID { get; set; }
     
+        public virtual Complain_Category Complain_Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Complaint_Stage> Complaint_Stage { get; set; }
     }

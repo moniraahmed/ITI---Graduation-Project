@@ -61,6 +61,13 @@ namespace ITI.API.Controllers
         {
             return new EmployeeManager().Getemp(id);
         }
+        [Route("GetEmployee/{username}/{pass}")]
+        [HttpGet]
+        public EmployeeMap Get(string username,string pass)
+        {
+            return new EmployeeManager().Getemp(username,pass);
+
+        }
         //static void CallApi(TokenResponse response)
         //{
         //    var client = new HttpClient();
