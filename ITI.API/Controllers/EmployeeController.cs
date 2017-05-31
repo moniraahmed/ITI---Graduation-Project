@@ -11,6 +11,7 @@ using ITI.Data.DBmodel;
 using System.Web.Http.OData.Query;
 using System.Web.Http.OData;
 using ITI.Business.Map;
+using ITI.Business;
 
 namespace ITI.API.Controllers
 {
@@ -85,6 +86,55 @@ namespace ITI.API.Controllers
 
         //    return client.RequestResourceOwnerPasswordAsync("test", "123456", "test").Result;
         //}
+        //change return type to complaint
+        [Route("ShowComplaints/{id}")]
+        [HttpGet]
+        public IEnumerable<Student_ComplaintsMap> ShowComplaints(int id)
+        {
+           var Emp= new EmployeeManager().Getemp(id);
+            if (Emp.TypeID == 1)//track supervisor
+            {
+                int? platformintakeid=new TrackSupervisorManager().GetPlatformintakeOfSupervisor(Emp.EmployeeID);
+                var stds= new StudentManager().GetStudentInSubtrack(platformintakeid);
+                List<Student_ComplaintsMap> allcomp=new List<Student_ComplaintsMap>();
+                foreach(var s in stds)
+                {
+
+                  allcomp.AddRange(new ComplaintManager().GetStudentComplaintsatStageOne(s.StudentID));
+                    
+                }
+                
+                return allcomp;
+            }
+            else if (Emp.TypeID == 4)//track manager
+            {
+                //missing job to insert stage2
+                IEnumerable<TrackManager> Trackmanagerlist = new TrackManagerManager().GetPlatformintakeOfManager(Emp.EmployeeID);
+                List<int?> platformids = new List<int?>();
+                foreach (var p in Trackmanagerlist)
+                {
+                   platformids.Add(p.PlatformIntakeID);
+                }
+                List<StudentBasicDataMap> stds = new List<StudentBasicDataMap>();
+                foreach(var p in platformids)
+                {
+                     stds.AddRange(new StudentManager().GetStudentInSubtrack(p));
+                }
+                List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
+                foreach (var s in stds)
+                {
+
+                    allcomp.AddRange(new ComplaintManager().GetStudentComplaintsatStageTwo(s.StudentID));
+
+                }
+                return allcomp;
+
+            }
+            else{
+                return null;
+            }
+        }
     }
+   
    
 }

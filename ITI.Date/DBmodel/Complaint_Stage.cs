@@ -18,7 +18,8 @@ namespace ITI.Data.DBmodel
         public int Comolaint_Id { get; set; }
         public System.DateTime EnterDate { get; set; }
         public Nullable<System.DateTime> ExitDate { get; set; }
-        public int FK_EmployeeID { get; set; }
+        public Nullable<int> FK_EmployeeID { get; set; }
+        public int CategoryID { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Stage Stage { get; set; }

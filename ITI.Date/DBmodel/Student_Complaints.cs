@@ -32,8 +32,8 @@ namespace ITI.Data.DBmodel
         public bool Type { get; set; }
     
         public virtual Complain_Category Complain_Category { get; set; }
+        public virtual StudentBasicData StudentBasicData1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Complaint_Stage> Complaint_Stage { get; set; }
-        public virtual StudentBasicData StudentBasicData1 { get; set; }
     }
 }

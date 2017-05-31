@@ -47,5 +47,11 @@ namespace ITI.Business.Manager
             //var xx=  Mapper.Map <programMap> x();
             //  return  ;
         }
+        //platformintake table
+        public IEnumerable<StudentBasicDataMap> GetStudentInSubtrack(int? platformintake)
+        {
+            var std = FindBy(a => a.SubTrackID == platformintake);
+            return Mapper.Map<IEnumerable<StudentBasicDataMap>>(std);
+        }
     }
 }

@@ -156,7 +156,7 @@ namespace ITI.Data.DataRepositoy
 
         public T FindobjBy(Expression<Func<T, bool>> predicate)
         {
-            T query = _entities.Set<T>().Where(predicate).Single();
+            T query = _entities.Set<T>().Where(predicate).First();
             return query;
         }
     }

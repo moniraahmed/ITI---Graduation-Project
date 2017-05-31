@@ -17,8 +17,8 @@ namespace ITI.Data.DBmodel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Complain_Category()
         {
-            this.Stages = new HashSet<Stage>();
             this.Student_Complaints = new HashSet<Student_Complaints>();
+            this.Stages = new HashSet<Stage>();
         }
     
         public int ID { get; set; }
@@ -26,8 +26,8 @@ namespace ITI.Data.DBmodel
         public string No_Of_Stages { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stage> Stages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student_Complaints> Student_Complaints { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Stage> Stages { get; set; }
     }
 }

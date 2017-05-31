@@ -27,12 +27,14 @@
           <Key>
             <PropertyRef Name="Stage_ID" />
             <PropertyRef Name="Comolaint_Id" />
+            <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="Stage_ID" Type="int" Nullable="false" />
           <Property Name="Comolaint_Id" Type="int" Nullable="false" />
           <Property Name="EnterDate" Type="datetime" Nullable="false" />
           <Property Name="ExitDate" Type="datetime" />
-          <Property Name="FK_EmployeeID" Type="int" Nullable="false" />
+          <Property Name="FK_EmployeeID" Type="int" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -176,6 +178,7 @@
         <EntityType Name="Stages">
           <Key>
             <PropertyRef Name="ID" />
+            <PropertyRef Name="FK_CategoryID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
@@ -186,7 +189,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsSolved" Type="bit" />
           <Property Name="FK_Student_Id" Type="int" Nullable="false" />
@@ -293,7 +296,7 @@
           <Property Name="StudentID" Type="int" />
         </EntityType>
         <Association Name="FK_Complaint_Stage_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Complaint_Stage" Type="Self.Complaint_Stage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -310,9 +313,11 @@
           <ReferentialConstraint>
             <Principal Role="Stages">
               <PropertyRef Name="ID" />
+              <PropertyRef Name="FK_CategoryID" />
             </Principal>
             <Dependent Role="Complaint_Stage">
               <PropertyRef Name="Stage_ID" />
+              <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -445,18 +450,6 @@
             </Principal>
             <Dependent Role="StudentBasicData">
               <PropertyRef Name="SubTrackID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentComplaint">
-          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="1" />
-          <End Role="Student_Complaints" Type="Self.Student_Complaints" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StudentBasicData">
-              <PropertyRef Name="StudentID" />
-            </Principal>
-            <Dependent Role="Student_Complaints">
-              <PropertyRef Name="FK_Student_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -631,10 +624,6 @@
             <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
             <End Role="StudentBasicData" EntitySet="StudentBasicData" />
           </AssociationSet>
-          <AssociationSet Name="FK_StudentComplaint" Association="Self.FK_StudentComplaint">
-            <End Role="StudentBasicData" EntitySet="StudentBasicData" />
-            <End Role="Student_Complaints" EntitySet="Student_Complaints" />
-          </AssociationSet>
           <AssociationSet Name="FK_TrackManager_Employee" Association="Self.FK_TrackManager_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="TrackManager" EntitySet="TrackManager" />
@@ -754,6 +743,15 @@
           </AssociationSet>
           <EntitySet Name="Departments" EntityType="Model.Department" />
           <EntitySet Name="Complain_Category" EntityType="Model.Complain_Category" />
+          <EntitySet Name="Student_Complaints" EntityType="Model.Student_Complaints" />
+          <AssociationSet Name="FK_Student_Complaints_Complain_Category" Association="Model.FK_Student_Complaints_Complain_Category">
+            <End Role="Complain_Category" EntitySet="Complain_Category" />
+            <End Role="Student_Complaints" EntitySet="Student_Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentComplaint" Association="Model.FK_StudentComplaint">
+            <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
+            <End Role="Student_Complaints" EntitySet="Student_Complaints" />
+          </AssociationSet>
           <EntitySet Name="Complaint_Stage" EntityType="Model.Complaint_Stage" />
           <EntitySet Name="Stages" EntityType="Model.Stage" />
           <AssociationSet Name="FK_Stages_Complain_Category" Association="Model.FK_Stages_Complain_Category">
@@ -768,18 +766,9 @@
             <End Role="Stage" EntitySet="Stages" />
             <End Role="Complaint_Stage" EntitySet="Complaint_Stage" />
           </AssociationSet>
-          <EntitySet Name="Student_Complaints" EntityType="Model.Student_Complaints" />
-          <AssociationSet Name="FK_Student_Complaints_Complain_Category" Association="Model.FK_Student_Complaints_Complain_Category">
-            <End Role="Complain_Category" EntitySet="Complain_Category" />
-            <End Role="Student_Complaints" EntitySet="Student_Complaints" />
-          </AssociationSet>
           <AssociationSet Name="FK_Complaint_Stage_Student_Complaints" Association="Model.FK_Complaint_Stage_Student_Complaints">
             <End Role="Student_Complaints" EntitySet="Student_Complaints" />
             <End Role="Complaint_Stage" EntitySet="Complaint_Stage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentComplaint" Association="Model.FK_StudentComplaint">
-            <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
-            <End Role="Student_Complaints" EntitySet="Student_Complaints" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Employee">
@@ -1277,19 +1266,63 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="No_Of_Stages" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Stages" Relationship="Model.FK_Stages_Complain_Category" FromRole="Complain_Category" ToRole="Stage" />
           <NavigationProperty Name="Student_Complaints" Relationship="Model.FK_Student_Complaints_Complain_Category" FromRole="Complain_Category" ToRole="Student_Complaints" />
+          <NavigationProperty Name="Stages" Relationship="Model.FK_Stages_Complain_Category" FromRole="Complain_Category" ToRole="Stage" />
         </EntityType>
+        <EntityType Name="Student_Complaints">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsSolved" Type="Boolean" />
+          <Property Name="FK_Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="FK_Category_Id" Type="Int32" Nullable="false" />
+          <Property Name="CurrentStage" Type="Int32" Nullable="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Solution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Complain_Category" Relationship="Model.FK_Student_Complaints_Complain_Category" FromRole="Student_Complaints" ToRole="Complain_Category" />
+          <NavigationProperty Name="StudentBasicData1" Relationship="Model.FK_StudentComplaint" FromRole="Student_Complaints" ToRole="StudentBasicData" />
+          <NavigationProperty Name="Complaint_Stage" Relationship="Model.FK_Complaint_Stage_Student_Complaints" FromRole="Student_Complaints" ToRole="Complaint_Stage" />
+        </EntityType>
+        <Association Name="FK_Student_Complaints_Complain_Category">
+          <End Type="Model.Complain_Category" Role="Complain_Category" Multiplicity="1" />
+          <End Type="Model.Student_Complaints" Role="Student_Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complain_Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student_Complaints">
+              <PropertyRef Name="FK_Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentComplaint">
+          <End Type="Model.StudentBasicData" Role="StudentBasicData" Multiplicity="1" />
+          <End Type="Model.Student_Complaints" Role="Student_Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentBasicData">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Student_Complaints">
+              <PropertyRef Name="FK_Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Complaint_Stage">
           <Key>
             <PropertyRef Name="Stage_ID" />
             <PropertyRef Name="Comolaint_Id" />
+            <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="Stage_ID" Type="Int32" Nullable="false" />
           <Property Name="Comolaint_Id" Type="Int32" Nullable="false" />
           <Property Name="EnterDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ExitDate" Type="DateTime" Precision="3" />
-          <Property Name="FK_EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="FK_EmployeeID" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Model.FK_Complaint_Stage_Employee" FromRole="Complaint_Stage" ToRole="Employee" />
           <NavigationProperty Name="Stage" Relationship="Model.FK_Complaint_Stage_Stages" FromRole="Complaint_Stage" ToRole="Stage" />
           <NavigationProperty Name="Student_Complaints" Relationship="Model.FK_Complaint_Stage_Student_Complaints" FromRole="Complaint_Stage" ToRole="Student_Complaints" />
@@ -1297,6 +1330,7 @@
         <EntityType Name="Stage">
           <Key>
             <PropertyRef Name="ID" />
+            <PropertyRef Name="FK_CategoryID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -1318,7 +1352,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Complaint_Stage_Employee">
-          <End Type="Model.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="Model.Employee" Role="Employee" Multiplicity="0..1" />
           <End Type="Model.Complaint_Stage" Role="Complaint_Stage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -1335,39 +1369,11 @@
           <ReferentialConstraint>
             <Principal Role="Stage">
               <PropertyRef Name="ID" />
+              <PropertyRef Name="FK_CategoryID" />
             </Principal>
             <Dependent Role="Complaint_Stage">
               <PropertyRef Name="Stage_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Student_Complaints">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsSolved" Type="Boolean" />
-          <Property Name="FK_Student_Id" Type="Int32" Nullable="false" />
-          <Property Name="FK_Category_Id" Type="Int32" Nullable="false" />
-          <Property Name="CurrentStage" Type="Int32" Nullable="false" />
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Solution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Type" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Complain_Category" Relationship="Model.FK_Student_Complaints_Complain_Category" FromRole="Student_Complaints" ToRole="Complain_Category" />
-          <NavigationProperty Name="Complaint_Stage" Relationship="Model.FK_Complaint_Stage_Student_Complaints" FromRole="Student_Complaints" ToRole="Complaint_Stage" />
-          <NavigationProperty Name="StudentBasicData1" Relationship="Model.FK_StudentComplaint" FromRole="Student_Complaints" ToRole="StudentBasicData" />
-        </EntityType>
-        <Association Name="FK_Student_Complaints_Complain_Category">
-          <End Type="Model.Complain_Category" Role="Complain_Category" Multiplicity="1" />
-          <End Type="Model.Student_Complaints" Role="Student_Complaints" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Complain_Category">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Student_Complaints">
-              <PropertyRef Name="FK_Category_Id" />
+              <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1380,18 +1386,6 @@
             </Principal>
             <Dependent Role="Complaint_Stage">
               <PropertyRef Name="Comolaint_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentComplaint">
-          <End Type="Model.StudentBasicData" Role="StudentBasicData" Multiplicity="1" />
-          <End Type="Model.Student_Complaints" Role="Student_Complaints" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StudentBasicData">
-              <PropertyRef Name="StudentID" />
-            </Principal>
-            <Dependent Role="Student_Complaints">
-              <PropertyRef Name="FK_Student_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1670,9 +1664,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Student_Complaints">
+            <EntityTypeMapping TypeName="Model.Student_Complaints">
+              <MappingFragment StoreEntitySet="Student_Complaints">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Solution" ColumnName="Solution" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="CurrentStage" ColumnName="CurrentStage" />
+                <ScalarProperty Name="FK_Category_Id" ColumnName="FK_Category_Id" />
+                <ScalarProperty Name="FK_Student_Id" ColumnName="FK_Student_Id" />
+                <ScalarProperty Name="IsSolved" ColumnName="IsSolved" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Complaint_Stage">
             <EntityTypeMapping TypeName="Model.Complaint_Stage">
               <MappingFragment StoreEntitySet="Complaint_Stage">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="FK_EmployeeID" ColumnName="FK_EmployeeID" />
                 <ScalarProperty Name="ExitDate" ColumnName="ExitDate" />
                 <ScalarProperty Name="EnterDate" ColumnName="EnterDate" />
@@ -1687,22 +1698,6 @@
                 <ScalarProperty Name="FK_CategoryID" ColumnName="FK_CategoryID" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Student_Complaints">
-            <EntityTypeMapping TypeName="Model.Student_Complaints">
-              <MappingFragment StoreEntitySet="Student_Complaints">
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Solution" ColumnName="Solution" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="CurrentStage" ColumnName="CurrentStage" />
-                <ScalarProperty Name="FK_Category_Id" ColumnName="FK_Category_Id" />
-                <ScalarProperty Name="FK_Student_Id" ColumnName="FK_Student_Id" />
-                <ScalarProperty Name="IsSolved" ColumnName="IsSolved" />
-                <ScalarProperty Name="Body" ColumnName="Body" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -15,9 +15,9 @@ namespace ITI.Business.Map
         public string Type { get; set; }
         public int FK_Student_Id { get; set; }
         public int FK_Category_Id { get; set; }
-        public virtual Complain_Category Complain_Category { get; set; }
-        public virtual ICollection<Complaint_Stage> Complaint_Stage { get; set; }
-        public virtual StudentBasicData StudentBasicData { get; set; }
+       // public virtual Complain_Category Complain_Category { get; set; }
+      //  public virtual ICollection<Complaint_Stage> Complaint_Stage { get; set; }
+      //  public virtual StudentBasicData StudentBasicData { get; set; }
 
     }
 }

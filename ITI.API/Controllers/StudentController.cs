@@ -43,10 +43,30 @@ namespace ITI.API.Controllers
         }
         [Route("AddComplaint/{id}")]
         [HttpPost]
-        public bool AddNewComplaint(int id,[FromBody]Student_Complaints newcomplaint)
+        public int AddNewComplaint([FromBody]Student_Complaints newcomplaint)
         {
             new ComplaintManager().AddComplaint(newcomplaint);
-              return true;
+            int NewComplaintID = newcomplaint.ID;
+            int st_id = newcomplaint.FK_Student_Id;
+            var s = new StudentManager().GetStudent(st_id);
+            int? empid=  new TrackSupervisorManager().GetSupervisor(s.SubTrackID);
+            Complaint_Stage newstage = new Complaint_Stage();
+            newstage.Comolaint_Id = NewComplaintID;
+            newstage.CategoryID = newcomplaint.FK_Category_Id;
+            newstage.Stage_ID = 1;
+            newstage.EnterDate = DateTime.Now.Date;
+            int Stage_duration= new StageManager().GetDuration(newstage.Stage_ID, newstage.CategoryID);
+            newstage.ExitDate = newstage.EnterDate.AddDays(Stage_duration);
+            newstage.FK_EmployeeID = empid;
+            new Complaint_StageManager().AddNewStage(newstage);
+            return 1;
+
+        }
+        [Route("GetComplaints/{st_id}")]
+        [HttpGet]
+        public IEnumerable<Student_ComplaintsMap> GetComplaints(int st_id)
+        {
+           return new ComplaintManager().GetStudentComplaints(st_id);
         }
 
     }

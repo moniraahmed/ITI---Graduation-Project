@@ -26,7 +26,7 @@ namespace ITI.Business.Map
 
 
         public virtual ICollection<UserDevice> UserDevices { get; set; }
-       
-       
+
+        public virtual ICollection<PlatfromIntakeMap> StudentBasicDatas { get; set; }
     }
 }
