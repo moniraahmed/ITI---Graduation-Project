@@ -62,7 +62,7 @@ namespace ITI.API.Controllers
         {
             return new EmployeeManager().Getemp(id);
         }
-        [Route("GetEmployee/{username}/{pass}")]
+        [Route("GetEmployee/{username}/{pass}")]//change it to sent username and password in body
         [HttpGet]
         public EmployeeMap Get(string username, string pass)
         {
@@ -130,7 +130,7 @@ namespace ITI.API.Controllers
                 return allcomp;
 
             }
-            else if (Emp.TypeID == 13)//9 Month Manager (Eng/Sherif Sharaf)
+            else if (Emp.TypeID == 13 && Emp.PlatformID == 178 )//9 Month Manager (Eng/Sherif Sharaf)
             {
                 var stds = new StudentManager().GetAll();
                 List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
@@ -154,7 +154,7 @@ namespace ITI.API.Controllers
 
 
             }
-            else if (Emp.TypeID == 19) //Chairman Assistant For Training (Eng/Amr EL-shafie)
+            else if (Emp.TypeID == 19 && Emp.PlatformID == 238) //Chairman Assistant For Training (Eng/Amr EL-shafie)
             {
                 var stds = new StudentManager().GetAll();
                 List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
@@ -182,23 +182,42 @@ namespace ITI.API.Controllers
 
             if (Emp.TypeID == 4) //Track Manager
             {
-                var allcomp = new ComplaintManager().GetStudentComplaintsatBeforeStageTwo();
+
+                IEnumerable<TrackManager> Trackmanagerlist = new TrackManagerManager().GetPlatformintakeOfManager(Emp.EmployeeID);
+                List<int?> platformids = new List<int?>();
+                foreach (var p in Trackmanagerlist)
+                {
+                    platformids.Add(p.PlatformIntakeID);
+                }
+                List<StudentBasicDataMap> stds = new List<StudentBasicDataMap>();
+                foreach (var p in platformids)
+                {
+                    stds.AddRange(new StudentManager().GetStudentInSubtrack(p));
+                }
+                List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
+                foreach (var s in stds)
+                {
+
+                    allcomp.AddRange(new ComplaintManager().GetStudentComplaintsatBeforeStageTwo(s.StudentID));
+
+                }
                 return allcomp;
+               
 
             }
 
-            else if (Emp.TypeID == 13) //9 Month Manager (Eng/Sherif Sharaf)
+            else if (Emp.TypeID == 13&& Emp.PlatformID ==178) //9 Month Manager (Eng/Sherif Sharaf)
             {
                 var allcomp = new ComplaintManager().GetStudentComplaintsatBeforeStageThree();
                 return allcomp;
 
             }
-            else if (Emp.TypeID == 19) //Chairman Assistant For Training (Eng/Amr EL-shafie)
+            else if (Emp.TypeID == 19 &&Emp.PlatformID==238) //Chairman Assistant For Training (Eng/Amr EL-shafie)
             {
                 var allcomp = new ComplaintManager().GetStudentComplaintsatBeforeStageFour();
                 return allcomp;
             }
-            else if (Emp.TypeID==3)
+            else if (Emp.TypeID==3 && Emp.PlatformID==164)// Executive Manager (Dr/Heba Saleh)
             {
                 var allcomp = new ComplaintManager().GetStudentComplaintsatAllStages();
                 return allcomp;

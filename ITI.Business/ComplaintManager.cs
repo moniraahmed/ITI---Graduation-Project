@@ -62,9 +62,9 @@ namespace ITI.Business
             return Mapper.Map<IEnumerable<Student_ComplaintsMap>>(comp);
         }
 
-        public IEnumerable<Student_ComplaintsMap> GetStudentComplaintsatBeforeStageTwo()
+        public IEnumerable<Student_ComplaintsMap> GetStudentComplaintsatBeforeStageTwo(int st_id)
         {
-            var comp = FindBy(a => a.CurrentStage < 2 && a.FK_Category_Id == 1).ToList();
+            var comp = FindBy(a => a.FK_Student_Id == st_id && a.CurrentStage == 1 && a.FK_Category_Id == 1).ToList();
             return Mapper.Map<IEnumerable<Student_ComplaintsMap>>(comp);
         }
 
