@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITI.Data", "ITI.Date\ITI.Data.csproj", "{970B043B-773F-4B4F-8B0C-B721DB1106C7}"
 EndProject
@@ -19,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIAuthorizationServer", "ITIAuthorizationServer\ITIAuthorizationServer.csproj", "{24872D28-E5D4-4886-A9FA-BD9D03DA1ECC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clint1", "clint1\clint1.csproj", "{58DC3501-1AD1-4D44-9157-ED1E5AD37516}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIEscalationSystem", "ITIEscalationSystem\ITIEscalationSystem.csproj", "{8638B131-959A-465F-A4EC-1C4C55F85021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,10 @@ Global
 		{58DC3501-1AD1-4D44-9157-ED1E5AD37516}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58DC3501-1AD1-4D44-9157-ED1E5AD37516}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58DC3501-1AD1-4D44-9157-ED1E5AD37516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8638B131-959A-465F-A4EC-1C4C55F85021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8638B131-959A-465F-A4EC-1C4C55F85021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8638B131-959A-465F-A4EC-1C4C55F85021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8638B131-959A-465F-A4EC-1C4C55F85021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
