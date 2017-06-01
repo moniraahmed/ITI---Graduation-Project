@@ -22,7 +22,7 @@ namespace ITI.API.Controllers
         [HttpGet]
         public IEnumerable<EmployeeMap> Get()
         {
-            
+
             return new EmployeeManager().Getemp().ToList();
 
         }
@@ -37,10 +37,10 @@ namespace ITI.API.Controllers
         //}
         [Route("GetEmployee")]
         [HttpGet]
-      //  [InlineCountQueryable]
-        public  IEnumerable<EmployeeMap> Get(ODataQueryOptions<EmployeeMap> options)
+        //  [InlineCountQueryable]
+        public IEnumerable<EmployeeMap> Get(ODataQueryOptions<EmployeeMap> options)
         {
-            return new EmployeeManager().Getemp().TOOData(options,this);
+            return new EmployeeManager().Getemp().TOOData(options, this);
             //ODataQuerySettings settingsodata = new ODataQuerySettings()
             //{
             //    PageSize = 10
@@ -64,9 +64,9 @@ namespace ITI.API.Controllers
         }
         [Route("GetEmployee/{username}/{pass}")]
         [HttpGet]
-        public EmployeeMap Get(string username,string pass)
+        public EmployeeMap Get(string username, string pass)
         {
-            return new EmployeeManager().Getemp(username,pass);
+            return new EmployeeManager().Getemp(username, pass);
 
         }
         //static void CallApi(TokenResponse response)
@@ -91,34 +91,34 @@ namespace ITI.API.Controllers
         [HttpGet]
         public IEnumerable<Student_ComplaintsMap> ShowComplaints(int id)
         {
-           var Emp= new EmployeeManager().Getemp(id);
-            if (Emp.TypeID == 1)//track supervisor
+            var Emp = new EmployeeManager().Getemp(id);
+            if (Emp.TypeID == 1)//Track Supervisor
             {
-                int? platformintakeid=new TrackSupervisorManager().GetPlatformintakeOfSupervisor(Emp.EmployeeID);
-                var stds= new StudentManager().GetStudentInSubtrack(platformintakeid);
-                List<Student_ComplaintsMap> allcomp=new List<Student_ComplaintsMap>();
-                foreach(var s in stds)
+                int? platformintakeid = new TrackSupervisorManager().GetPlatformintakeOfSupervisor(Emp.EmployeeID);
+                var stds = new StudentManager().GetStudentInSubtrack(platformintakeid);
+                List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
+                foreach (var s in stds)
                 {
 
-                  allcomp.AddRange(new ComplaintManager().GetStudentComplaintsatStageOne(s.StudentID));
-                    
+                    allcomp.AddRange(new ComplaintManager().GetStudentComplaintsatStageOne(s.StudentID));
+
                 }
-                
+
                 return allcomp;
             }
-            else if (Emp.TypeID == 4)//track manager
+            else if (Emp.TypeID == 4)//Track Manager
             {
                 //missing job to insert stage2
                 IEnumerable<TrackManager> Trackmanagerlist = new TrackManagerManager().GetPlatformintakeOfManager(Emp.EmployeeID);
                 List<int?> platformids = new List<int?>();
                 foreach (var p in Trackmanagerlist)
                 {
-                   platformids.Add(p.PlatformIntakeID);
+                    platformids.Add(p.PlatformIntakeID);
                 }
                 List<StudentBasicDataMap> stds = new List<StudentBasicDataMap>();
-                foreach(var p in platformids)
+                foreach (var p in platformids)
                 {
-                     stds.AddRange(new StudentManager().GetStudentInSubtrack(p));
+                    stds.AddRange(new StudentManager().GetStudentInSubtrack(p));
                 }
                 List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
                 foreach (var s in stds)
@@ -130,7 +130,82 @@ namespace ITI.API.Controllers
                 return allcomp;
 
             }
-            else{
+            else if (Emp.TypeID == 13)//9 Month Manager (Eng/Sherif Sharaf)
+            {
+                var stds = new StudentManager().GetAll();
+                List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
+                foreach (var s in stds)
+                {
+
+                    allcomp.AddRange(new ComplaintManager().GetStudentComplaintsatStageThree(s.StudentID));
+
+                }
+                return allcomp;
+                //best performance
+                //var complaints = new ComplaintManager().GetAllComplaints();
+                //List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
+                //foreach (var c in complaints)
+                //{
+
+                //    allcomp.Add(new ComplaintManager().GetStudentComplaintsatStageThree1(c.ID));
+
+                //}
+                //return allcomp;
+
+
+            }
+            else if (Emp.TypeID == 19) //Chairman Assistant For Training (Eng/Amr EL-shafie)
+            {
+                var stds = new StudentManager().GetAll();
+                List<Student_ComplaintsMap> allcomp = new List<Student_ComplaintsMap>();
+                foreach (var s in stds)
+                {
+
+                    allcomp.AddRange(new ComplaintManager().GetStudentComplaintsatStageFour(s.StudentID));
+
+                }
+                return allcomp;
+            }
+
+            else
+            {
+                return null;
+            }
+        }
+
+        [Route("MonitorComplaints/{id}")]
+        [HttpGet]
+        public IEnumerable<Student_ComplaintsMap> MonitorComplaints(int id)
+        {
+
+            var Emp = new EmployeeManager().Getemp(id);
+
+            if (Emp.TypeID == 4) //Track Manager
+            {
+                var allcomp = new ComplaintManager().GetStudentComplaintsatBeforeStageTwo();
+                return allcomp;
+
+            }
+
+            else if (Emp.TypeID == 13) //9 Month Manager (Eng/Sherif Sharaf)
+            {
+                var allcomp = new ComplaintManager().GetStudentComplaintsatBeforeStageThree();
+                return allcomp;
+
+            }
+            else if (Emp.TypeID == 19) //Chairman Assistant For Training (Eng/Amr EL-shafie)
+            {
+                var allcomp = new ComplaintManager().GetStudentComplaintsatBeforeStageFour();
+                return allcomp;
+            }
+            else if (Emp.TypeID==3)
+            {
+                var allcomp = new ComplaintManager().GetStudentComplaintsatAllStages();
+                return allcomp;
+            }
+
+            else
+            {
                 return null;
             }
         }
