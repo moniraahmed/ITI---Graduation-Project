@@ -18,7 +18,7 @@ namespace ITI.Business.Map
         public string Status { get; set; }
         public int CurrentStage { get; set; }
 
-        // public virtual Complain_Category Complain_Category { get; set; }
+        public virtual Complain_Category Complain_Category { get; set; }
         //  public virtual ICollection<Complaint_Stage> Complaint_Stage { get; set; }
         //  public virtual StudentBasicData StudentBasicData { get; set; }
 
