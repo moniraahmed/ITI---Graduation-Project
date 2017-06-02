@@ -53,5 +53,12 @@ namespace ITI.Business.Manager
             var std = FindBy(a => a.SubTrackID == platformintake);
             return Mapper.Map<IEnumerable<StudentBasicDataMap>>(std);
         }
+
+
+        public int GetSubtrackId(int st_id)
+        {
+            var std = FindobjBy(a => a.StudentID == st_id);
+            return std.SubTrackID;
+        }
     }
 }

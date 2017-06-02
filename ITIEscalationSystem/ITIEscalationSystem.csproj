@@ -88,11 +88,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\complaint.css" />
+    <Content Include="css\file-complaint.css" />
+    <Content Include="css\home-complaint.css" />
+    <Content Include="css\home-default.css" />
+    <Content Include="css\signin.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\title.css" />
     <Content Include="Global.asax" />
+    <Content Include="imgs\face.png" />
+    <Content Include="imgs\favico.png" />
+    <Content Include="imgs\ITI logo rebranded-012.png" />
+    <Content Include="imgs\logo.png" />
+    <Content Include="js\script.js" />
+    <Content Include="libs\bootstrap\css\bootstrap.css" />
+    <Content Include="libs\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="libs\bootstrap\js\bootstrap.min.js" />
+    <Content Include="libs\font-awesome\css\font-awesome.min.css" />
+    <Content Include="libs\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="libs\jquery\jquery-3.1.1.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\SupervisorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -101,6 +120,19 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Views\Supervisor\Index.cshtml" />
+    <Content Include="libs\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="libs\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="libs\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="libs\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="libs\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="libs\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="libs\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="libs\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="libs\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="fonts\segoeui.ttf" />
+    <Content Include="fonts\seguisb.ttf" />
+    <Content Include="Views\Supervisor\ShowCompliants.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

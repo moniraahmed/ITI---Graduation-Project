@@ -69,5 +69,32 @@ namespace ITI.API.Controllers
            return new ComplaintManager().GetStudentComplaints(st_id);
         }
 
+
+        [Route("GetStudentSubTrackName/{st_id}")]
+        [HttpGet]
+        public string GetStudentSubTrackName(int st_id)
+        {
+            int ? subtrackID = new StudentManager().GetSubtrackId(st_id);
+            int? SubTrackIDFromPlatformIntakeID = new PlatfromIntakeManager().GetSubTrackIDFromPlatFormIntakeID(subtrackID);
+            var SubTrackName = new subTrackManager().GetSubTrackName(SubTrackIDFromPlatformIntakeID);
+            return SubTrackName;
+
+
+        }
+
+        [Route("GetCompliantEnterDate/{comp_id}/{catgry_id}")]
+        [HttpGet]
+        public DateTime GetCompliantEnterDate(int comp_id,int catgry_id)
+        {
+
+           return new Complaint_StageManager().GetEnterDate(comp_id,catgry_id);
+
+        }
+
+
+
+
+
+
     }
 }

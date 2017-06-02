@@ -1,0 +1,157 @@
+.circle{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ddd;
+    text-align: center;
+    line-height: 38px;
+    display: inline-block;
+    color: darkgray;
+
+}
+.stage1,.stage2,.stage3,.stage4{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+.stage{
+    text-align: center;
+    margin-bottom: 80px;
+}
+.stage span{
+    color: darkgray;
+    display: none;
+}
+.stage h3{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.circle-container:before{
+    content: "";
+    height: 2px;
+    width: 65px;
+    display: inline-block;
+    background-color: #ddd;
+    margin-bottom: 5px;
+    margin-left: -5px;
+    margin-right: -5px;
+
+}
+.circle-container:after{
+    content: "";
+    height: 2px;
+    width: 65px;
+    display: inline-block;
+
+    background-color: #ddd;
+    margin-bottom: 5px;
+    margin-left: -5px;
+    margin-right: -5px;
+
+}
+.circle{
+    margin-bottom: 10px;
+}
+.solved-stage .circle{
+    background-color: #58b957;
+    color: white;
+}
+.solved-stage span{
+    display: block;
+}
+.pending-stage .circle{
+    background-color: orange;
+    color: white;
+}
+.pending-stage span{
+    display: block;
+}
+.col-sm-3{
+    color: darkgray;
+}
+.solved:after{
+    content: "Solved";
+    color: #58b957;
+}
+.pending:after{
+    content: "Pending";
+    color: orange;
+}
+.row{
+    margin-bottom: 15px;
+}
+.form-horizontal .control-label{
+    text-align: left;
+    font-weight: normal;
+}
+.btn-default{
+    background-color: #2c3e50;
+    width: 150px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 10px;
+    padding: 10px;
+
+}
+.btn-default:hover{
+    background-color: #2c3e50;
+    width: 150px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 10px;
+    padding: 10px;
+
+    opacity: 0.7;
+}
+.btn-default:active,.btn-default:active:hover,.btn-default:active:focus,.btn-default:focus{
+    background-color: #2c3e50;
+    width: 150px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 10px;
+    padding: 10px;
+
+}
+
+.btn-secondry{
+    background-color: transparent;
+    width: 150px;
+    border-radius: 8px;
+    border: 2px solid #2c3e50;
+    color: #2c3e50;
+    margin-top: 10px;
+    padding: 8px;
+
+
+}
+.btn-secondry:hover{
+    background-color: #2c3e50;
+    width: 150px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+.btn-secondry:active,.btn-secondry:active:hover,.btn-secondry:active:focus,.btn-secondry:focus{
+
+
+    background-color: transparent;
+    width: 150px;
+    border-radius: 8px;
+    border: 2px solid #2c3e50;
+    color: #2c3e50;
+    margin-top: 10px;
+    padding: 8px;
+
+
+}
+
+#blockB{
+    float: right;
+}
+#blockA{
+    float:left;
+}
+

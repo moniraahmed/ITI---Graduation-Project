@@ -1,0 +1,44 @@
+.table.table-hover,th{
+    text-align: center;
+    font-size: 20px;
+
+}
+.pending:after{
+    content: "Pending";
+    color:orange;
+}
+.solved:after{
+    content: "Solved";
+    color:#58b957;
+}
+thead{
+    background-color:#f7f7f7;
+    border-top: 2px solid #ddd;
+}
+tbody tr{
+    cursor: pointer;
+}
+.table > thead > tr >.date,.table > tbody > tr >.date{
+    padding-left: 250px;
+}
+.table > thead > tr >.status,.table > tbody > tr >.status{
+    padding-right: 250px;
+}
+@media (max-width:1000px){
+    .table > thead > tr >.date,.table > tbody > tr >.date{
+        padding-left: 150px;
+    }
+    .table > thead > tr >.status,.table > tbody > tr >.status{
+        padding-right: 150px;
+    }
+    
+}
+@media (max-width:700px){
+    .table > thead > tr >.date,.table > tbody > tr >.date{
+        padding-left: 8px;
+    }
+    .table > thead > tr >.status,.table > tbody > tr >.status{
+        padding-right: 8px;
+    }
+    
+}

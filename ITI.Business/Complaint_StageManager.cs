@@ -14,6 +14,14 @@ namespace ITI.Business
         {
             Add(newstage);
         }
+
+
+        public DateTime GetEnterDate(int compliantID,int CatgeoryID)
+        {
+            var compliantStage = FindobjBy(a => a.Comolaint_Id == compliantID && a.CategoryID == CatgeoryID && a.Stage_ID == 1);
+            return (compliantStage.EnterDate).Date;
+
+        }
         
     }
 }

@@ -69,9 +69,11 @@
     <Compile Include="Map\StudentMap.cs" />
     <Compile Include="Map\subTrackMap.cs" />
     <Compile Include="Map\TrackManualMap.cs" />
+    <Compile Include="PlatfromIntakeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="programManager.cs" />
     <Compile Include="StageManager.cs" />
+    <Compile Include="subTrackManager.cs" />
     <Compile Include="TrackManagerManager.cs" />
     <Compile Include="TrackSupervisorManager.cs" />
     <Compile Include="UserDevicesManager.cs" />
